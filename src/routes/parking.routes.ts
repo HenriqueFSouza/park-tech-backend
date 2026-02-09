@@ -1,6 +1,7 @@
 import { Router } from "express";
 import CreateParkingRecordController from "../controllers/parking/CreateParkingRecordController";
 import ExitParkingRecordController from "../controllers/parking/ExitParkingRecordController";
+import GetParkingRecordPriceController from "../controllers/parking/GetParkingRecordPriceController";
 import GetParkingRecordsController from "../controllers/parking/GetParkingRecordsController";
 import UpdateParkingRecordController from "../controllers/parking/UpdateParkingRecordController";
 import { validateAuth } from "../middlewares/validateAuth";
@@ -23,6 +24,12 @@ router.post(
   "/parking/:id/exit",
   validateAuth,
   ExitParkingRecordController.handle,
+);
+
+router.get(
+  "/parking/:id/price",
+  validateAuth,
+  GetParkingRecordPriceController.handle,
 );
 
 router.put(
